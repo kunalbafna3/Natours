@@ -6,3 +6,216 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* what this does is border/margin dont add up to the total width or height of the box */
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header{
+    
+    height: 95vh;
+    /* 95% of viewport height and its also responsive */
+    background-image:  linear-gradient(to right bottom, 
+        rgba(21, 82, 10, 0.8), rgba(40, 180, 131,0.8)),
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    /* the image stays at the top and when you shrink the size the bottom image getss croped but top remains the same */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* adding vh in value makes it responsive */
+    position: relative;
+    /* for .logo-box */
+    
+}
+
+.logo-box{
+ position:absolute;
+ /* make the parent relative which is .header */
+ top: 40px;
+ left: 40px;
+}
+
+.logo{
+height: 35px;
+}
+
+.text-box{
+    /* this is responsive as it will always be some % of top and left */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* 40 and 50% are in respect to parent element */
+    transform: translate(-50%,-50%);
+    /* it takes size from element not from parent,
+    basically it will reposition the box */
+    text-align: center;
+    /* for the button to be center */
+}
+
+.heading-primary{
+color: #fff;
+text-transform: uppercase;
+
+backface-visibility: hidden;
+/* back face will be hidden, for ex if we rotate 180deg then that back face will be hidden */
+/* here we are using it to remove or hide the abnormality at the end of the animation where it shifts a bit to the top */
+margin-bottom: 60px;
+}
+
+.heading-primary-main{
+    display: block;
+    /* for line change */
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    /* to create animation and conect it to keyframe */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /* more properties for animation */
+    /* animation-delay: time; */
+    /* animation-iteration-count: count; */
+}
+
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+    
+    100% {
+        
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    80%{
+        transform: translateX(-10px);
+    }
+    
+    100% {
+        
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    100% {
+        
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    /* imp property to add */
+
+    /* same prop as button */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    /* to put it behind the main button */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.5) scaleY(1.6);
+    opacity: 0;
+    /* to make it fade out */
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* animation at 0% in keyframe will now be applied before the animation starts = it is required bcoz animation starts at .75s till then the button will be visible to remove that we used */
+}
