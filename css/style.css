@@ -7,20 +7,33 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+::after,
+::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /* what this does is border/margin dont add up to the total width or height of the box */
 }
 
+html {
+    font-size: 62.5%;
+    /* we are going to convert to rem from px and 1rem = 10px
+    and for that we need to define root font size
+    , and now we only have to divide all the pixels by 10 to get the rem 
+    and it will be simple during media queries as we only have to change the root font size */
+
+    /* 10/16 * 100  = 62.5% */
+    /* in percentage so that the user can change the default browser font size */
+}
+
 body{
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
 }
 
 .header{
@@ -40,18 +53,18 @@ body{
     
 }
 
-.logo-box{
+.header__logo-box{
  position:absolute;
  /* make the parent relative which is .header */
- top: 40px;
- left: 40px;
+ top: 4rem;
+ left: 4rem;
 }
 
-.logo{
-height: 35px;
+.header__logo{
+height: 3.5rem;
 }
 
-.text-box{
+.header__text-box{
     /* this is responsive as it will always be some % of top and left */
     position: absolute;
     top: 40%;
@@ -71,15 +84,15 @@ text-transform: uppercase;
 backface-visibility: hidden;
 /* back face will be hidden, for ex if we rotate 180deg then that back face will be hidden */
 /* here we are using it to remove or hide the abnormality at the end of the animation where it shifts a bit to the top */
-margin-bottom: 60px;
+margin-bottom: 6rem;
 }
 
-.heading-primary-main{
+.heading-primary--main{
     display: block;
     /* for line change */
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     /* to create animation and conect it to keyframe */
     animation-name: moveInLeft;
@@ -91,11 +104,11 @@ margin-bottom: 60px;
     /* animation-iteration-count: count; */
 }
 
-.heading-primary-sub{
+.heading-primary--sub{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     animation-name: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -105,14 +118,14 @@ margin-bottom: 60px;
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
         /* as direction goes from left to right and we want in left so negative value */
 
         /* for best performance in browser is to use only two diff properties */
     }
 
     80%{
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
     
     100% {
@@ -126,14 +139,14 @@ margin-bottom: 60px;
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
         /* as direction goes from left to right and we want in left so negative value */
 
         /* for best performance in browser is to use only two diff properties */
     }
 
     80%{
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
     
     100% {
@@ -147,7 +160,7 @@ margin-bottom: 60px;
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
         /* as direction goes from left to right and we want in left so negative value */
 
         /* for best performance in browser is to use only two diff properties */
@@ -165,24 +178,25 @@ margin-bottom: 60px;
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
     transform: translateY(1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -195,7 +209,7 @@ margin-bottom: 60px;
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     /* to put it behind the main button */
     top: 0;
@@ -204,7 +218,7 @@ margin-bottom: 60px;
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -214,7 +228,7 @@ margin-bottom: 60px;
     /* to make it fade out */
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
     /* animation at 0% in keyframe will now be applied before the animation starts = it is required bcoz animation starts at .75s till then the button will be visible to remove that we used */
