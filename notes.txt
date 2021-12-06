@@ -1,0 +1,5 @@
+we have to write script to compile the sass in package.json
+
+name:sass "node-sass inputfileloc outputfileloc -w"
+-w for watch ....itwill keep watching
+in terminal = npm run name:sass
