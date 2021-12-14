@@ -1,0 +1,58 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+        /* as direction goes from left to right and we want in left so negative value */
+
+        /* for best performance in browser is to use only two diff properties */
+    }
+
+    100% {
+
+        opacity: 1;
+        transform: translate(0);
+        /* for best performance in browser is to use only two diff properties */
+    }
+}

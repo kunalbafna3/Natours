@@ -1,0 +1,36 @@
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+    /* back face will be hidden, for ex if we rotate 180deg then that back face will be hidden */
+    /* here we are using it to remove or hide the abnormality at the end of the animation where it shifts a bit to the top */
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        /* for line change */
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+
+        /* to create animation and conect it to keyframe */
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+
+        /* more properties for animation */
+        /* animation-delay: time; */
+        /* animation-iteration-count: count; */
+    }
+
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+}
